@@ -1,0 +1,19 @@
+{
+  "topology_verified": false,
+  "symbols_and_polarity_correct": false,
+  "geometry_clear": false,
+  "labels_clear": false,
+  "crop_clear": false,
+  "visual_image_inspected": false,
+  "scores": {
+    "topology": 0,
+    "routing": 0,
+    "labels": 0,
+    "readability": 0,
+    "aesthetics": 0
+  },
+  "issues": [
+    "Describe each actual defect in rendered image here; remove this entry only when resolved."
+  ],
+  "notes": "Name the PNG examined, nets traced, and specific visual observations. A tool cannot self-certify that the image was viewed."
+}

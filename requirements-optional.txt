@@ -1,0 +1,4 @@
+# Optional automated PDF auditing / renderer fallback
+PyMuPDF>=1.22
+# Optional image comparisons/contact sheets
+Pillow>=9

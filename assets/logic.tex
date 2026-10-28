@@ -1,0 +1,24 @@
+% Reference digital schematic: one-bit toggle register (Q_next = ~Q).
+% Produced with native CircuiTikZ flip-flop and gate symbols.
+\documentclass[border=12pt]{standalone}
+\usepackage[american]{circuitikz}
+\begin{document}
+\begin{circuitikz}[line width=0.85pt, american]
+  \ctikzset{logic ports=ieee}
+  % Use true electrical pin anchors, never inferred edge intersections.
+  \node[flipflop D] (ff) at (4.7,0) {};
+  \node[american not port, rotate=180, scale=0.86] (inv) at (3.3,2.8) {};
+
+  % Clock and output.
+  \draw (ff.pin 3) -- ++(-2.7,0) node[left] {$\mathrm{CLK}$};
+  \path (ff.pin 6) ++(2.2,0) coordinate (qbranch);
+  \draw (ff.pin 6) -- (qbranch) -- ++(1.1,0) node[right] {$Q$};
+  \fill (qbranch) circle (1.55pt);
+
+  % Dedicated upper feedback lane: Q through NOT to D.
+  \draw (qbranch) |- (inv.in);
+  \path (inv.out) ++(-1.35,0) coordinate (feedback-left);
+  \draw (inv.out) -- (feedback-left) |- (ff.pin 1);
+  \node[font=\small, anchor=south] at (4.7,1.55) {$D=\overline{Q}$};
+\end{circuitikz}
+\end{document}

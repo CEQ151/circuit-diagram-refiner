@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "title": "DFF with explicit NOT-gate feedback (toggle register)",
+  "components": [
+    {
+      "id": "FF1",
+      "type": "DFF",
+      "pins": [
+        "D",
+        "CLK",
+        "Q",
+        "Qbar"
+      ],
+      "no_connect": [
+        "Qbar"
+      ]
+    },
+    {
+      "id": "INV1",
+      "type": "NOT",
+      "pins": [
+        "IN",
+        "OUT"
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "name": "CLK",
+      "direction": "in"
+    },
+    {
+      "name": "Q",
+      "direction": "out"
+    }
+  ],
+  "nets": [
+    {
+      "name": "clock",
+      "pins": [
+        "PORT.CLK",
+        "FF1.CLK"
+      ]
+    },
+    {
+      "name": "q",
+      "pins": [
+        "FF1.Q",
+        "PORT.Q",
+        "INV1.IN"
+      ]
+    },
+    {
+      "name": "feedback",
+      "pins": [
+        "INV1.OUT",
+        "FF1.D"
+      ]
+    }
+  ]
+}

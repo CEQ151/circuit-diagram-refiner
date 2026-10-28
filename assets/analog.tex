@@ -1,0 +1,13 @@
+% Reference analog schematic: passive first-order low-pass filter.
+\documentclass[border=12pt]{standalone}
+\usepackage[american]{circuitikz}
+\begin{document}
+\begin{circuitikz}[line width=0.85pt, american]
+  % Complete loop; the source return and capacitor ground share one net.
+  \draw (0,0) node[ground]{} to[sV, l_=$v_{\mathrm{in}}(t)$] (0,3);
+  \draw (0,3) to[R, l=$R_1\;10\,\mathrm{k}\Omega$] (4.2,3);
+  \draw (4.2,3) -- (7.2,3) node[ocirc]{} node[right] {$v_{\mathrm{out}}(t)$};
+  \draw (4.2,3) to[C, l_=$C_1\;10\,\mathrm{nF}$] (4.2,0) -- (0,0);
+  \fill (4.2,3) circle (1.5pt);
+\end{circuitikz}
+\end{document}
